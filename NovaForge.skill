@@ -92,7 +92,7 @@ bash scripts/new-project.sh 我的笔记
 \formula{核心公式/原理}    % 带框居中展示
 \key{关键术语}            % 橙红强调
 \super{拓展内容}          % 紫红超纲标记
-\tag{来源标注}            % 紫色小字标注来源
+\source{来源标注}            % 紫色小字标注来源
 
 \begin{exampenv}{标题}    % 案例/例题环境（自动带"分析：")
   ...题目和解答...

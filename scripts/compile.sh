@@ -18,10 +18,10 @@ elif [ ! -f "template.tex" ]; then
 fi
 
 echo "[1/3] 第一次编译（生成目录）..."
-xelatex -interaction=nonstopmode template.tex >/dev/null
+xelatex -interaction=nonstopmode template.tex >/dev/null || true
 
 echo "[2/3] 第二次编译（解析引用）..."
-xelatex -interaction=nonstopmode template.tex >/dev/null
+xelatex -interaction=nonstopmode template.tex >/dev/null || true
 
 echo "[3/3] 清理临时文件..."
 rm -f *.aux *.log *.out *.toc *.bbl *.blg *.fdb_latexmk *.fls *.xdv *.synctex.gz

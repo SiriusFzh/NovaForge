@@ -1,0 +1,150 @@
+---
+name: NovaForge
+description: NovaForge 通用知识笔记模板 — 考研/考公/专业课/科研/项目/竞赛。LaTeX+Markdown双版本，7步模块化结构，适配任意学科。GitHub: https://github.com/SiriusFzh/NovaForge
+---
+
+# NovaForge — 通用知识笔记模板
+
+将任意学科/项目的知识体系整理为结构化笔记。支持 LaTeX（编译为精美 PDF）和 Markdown（快速记录）双版本模板，适用于考研、考公、专业课学习、科研研究、项目总结、竞赛准备等场景。
+
+**核心理念：** 先理解知识体系 → 按模块组织 → 生成含概念+原理+方法+案例+实战+练习+复盘的完整笔记。
+
+## 模板体系
+
+```
+NovaForge/
+├── latex/
+│   ├── template.tex          # 完整可编译 LaTeX 模板（封面→目录→正文→附录）
+│   └── preamble.tex          # 导言区（颜色/命令/环境定义，可独立 \input{}）
+├── markdown/
+│   ├── chapter-notes.md      # 专业课章节笔记模板
+│   ├── exam-review.md        # 考前复习/冲刺模板（含考情分析+题型归纳+错题本）
+│   ├── research-note.md      # 科研笔记模板（文献卡片+实验记录+课题思路）
+│   └── project-summary.md    # 项目总结模板（架构设计+决策记录+复盘）
+├── scripts/
+│   ├── new-project.bat       # Windows: 快速新建项目脚手架
+│   ├── new-project.sh        # macOS/Linux: 快速新建项目脚手架
+│   └── compile.bat           # Windows: 一键编译 LaTeX（2遍自动清理）
+└── assets/                   # 预览截图
+```
+
+## 核心 7 步结构
+
+每节/每模块按以下框架组织，可按场景灵活裁剪：
+
+| # | 板块 | 说明 | 适用场景 |
+|---|------|------|---------|
+| 1 | 概念引入 | 建立直觉，理解"为什么" | 所有场景 |
+| 2 | 核心原理/公式 | 提炼要点，逻辑推导 | 所有场景 |
+| 3 | 方法技巧 | 做题/实操技巧浓缩 | 考试、竞赛 |
+| 4 | 典型示例 | 经典例题/案例搭桥 | 学习、考试 |
+| 5 | 真题/实战 | 真实题目/项目实战 | 考试、项目 |
+| 6 | 巩固练习 | 带解答的练习/复盘 | 学习、竞赛 |
+| 7 | 总结复盘 | 易错点、思维导图、延伸思考 | 所有场景 |
+
+## 使用方式
+
+### 方式一：克隆完整仓库（推荐）
+
+```bash
+git clone https://github.com/SiriusFzh/NovaForge.git
+cd NovaForge
+
+# LaTeX 版
+cd latex
+xelatex template.tex    # 编译
+
+# 或使用 Markdown 版
+cd markdown
+# 直接用编辑器打开编辑
+```
+
+### 方式二：快速新建项目
+
+```bash
+# Windows
+scripts\new-project.bat 我的笔记
+
+# macOS / Linux
+bash scripts/new-project.sh 我的笔记
+```
+
+### 方式三：单独使用 skill 文件
+
+将此 `.skill` 文件放入 Claude Code 的 skills 目录即可让 AI 按 NovaForge 结构生成笔记。
+
+## 跨领域适配
+
+| 场景 | 推荐模板 | 使用要点 |
+|------|---------|---------|
+| **考研** | `latex/template.tex` | 按考纲分章，标注历年真题年份 |
+| **考公** | `markdown/exam-review.md` | 行测/申论模块化，重点错题复盘 |
+| **专业课** | `markdown/chapter-notes.md` | 同步教材章节，每课一记 |
+| **科研** | `markdown/research-note.md` | 文献卡片 + 实验记录 + 课题思路 |
+| **项目总结** | `markdown/project-summary.md` | 架构 + 决策 + 复盘 |
+| **竞赛** | `markdown/exam-review.md` | 题型分类 + 方法模板 + 限时策略 |
+| **期末复习** | `latex/template.tex` | 精简版，聚焦考点 + 公式 + 典型题 |
+
+## LaTeX 核心命令速查
+
+```latex
+\knowtitle{知识点标题}     % 浅蓝灰背景标题栏
+\formula{核心公式/原理}    % 带框居中展示
+\key{关键术语}            % 橙红强调
+\super{拓展内容}          % 紫红超纲标记
+\tag{来源标注}            % 紫色小字标注来源
+
+\begin{exampenv}{标题}    % 案例/例题环境（自动带"分析：")
+  ...题目和解答...
+\end{exampenv}
+
+\begin{pracenv}{标题}     % 练习/复盘环境（带解答）
+  ...练习内容...
+\end{pracenv}
+```
+
+> 所有解题/过程注释统一用 `\quad\Big(\text{说明})\Big)` 格式，解释推导理由。
+
+## 一键换色
+
+修改 `latex/preamble.tex` 中的 `\definecolor{titlecolor}`：
+
+```latex
+\definecolor{titlecolor}{HTML}{1a237e}    % 理科冷静蓝（默认）
+\definecolor{titlecolor}{HTML}{8b0000}    % 文科典雅红
+\definecolor{titlecolor}{HTML}{2e7d32}    % 清新自然绿
+\definecolor{titlecolor}{HTML}{e65100}    % 活力竞赛橙
+```
+
+非理工科可移除数学宏包：
+```latex
+% \usepackage{amsmath,amssymb,amsthm}
+% \usepackage{cancel}
+% \usepackage{physics}
+% \usepackage{bm}
+```
+
+## 编译与排错
+
+```bash
+# LaTeX 编译（必须 2~3 遍）
+xelatex template.tex     # 第1遍：生成 .toc
+xelatex template.tex     # 第2遍：解析交叉引用
+# 如目录不完整，再编译第3遍
+
+# 清理中间文件
+rm *.aux *.log *.out *.toc
+```
+
+**常见问题：**
+- `\formula{` 缺闭合 `}` → 编译中断，.toc 为空 → 全文搜索检查
+- `\cancel` 未定义 → 导言区加 `\usepackage{cancel}`
+- 中文显示为方框 → 检查 SimSun 字体是否安装
+
+## 注意事项
+
+- LaTeX 版需要 `xelatex` 编译器 + SimSun 宋体（Windows 预装，macOS/Linux 需额外安装）
+- Markdown 版可在任意编辑器中编辑（推荐 VS Code + Markdown Preview Enhanced）
+- 模板不预设任何具体科目、院校、人名
+- 技能模板的 YAML 头中的 name 字段不能与其他 skill 重名
+- 本项目 MIT 协议，自由使用、修改、分享

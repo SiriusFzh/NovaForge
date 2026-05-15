@@ -32,7 +32,7 @@
 
 ## 📋 更新日志
 
-### 2026/5/15 19:50
+### 2026/5/15 23:28
 - **新增 Typst 模板版本**：提供 `typst/preamble.typ` + `typst/template.typ`，语法更现代、编译更快（单次编译，无需多遍）
 - **三种输出格式**：Intake 流程扩展为 LaTeX（默认）/ Typst / Markdown 三选一
 - **NovaForge.skill 同步**：已与本地 SKILL.md 内容完全一致（修复上次遗留问题）

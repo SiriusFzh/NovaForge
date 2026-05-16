@@ -32,6 +32,11 @@
 
 ## 📋 更新日志
 
+### 2026/5/16 13:00
+- **新增  目录**：内置 NovaForge、pdf、summarize-slides 三个 skill，克隆后 Claude Code 自动识别 、、 命令
+- **NovaForge.skill 同步**：更新为最新版本，与本地 SKILL.md 一致
+- **快速开始简化**：无需手动复制 skill 文件，开箱即用
+
 ### 2026/5/16 12:00
 - **修复引号渲染方向**：导言区新增中文引号规范，强制使用 Unicode 弯引号（U+201C/U+201D）
 - **消除目录红框**：hyperref 改用 `hidelinks`，去除目录条目链接边框
@@ -106,7 +111,7 @@ cd markdown
 # 直接用 VS Code / Obsidian 编辑 .md 文件
 
 #   Claude Code 集成
-# 将 NovaForge.skill 放入 .claude/skills/ 目录即可
+# 仓库已内置 .claude/skills/NovaForge.skill，克隆后 /novaforge 直接可用
 ```
 
 ### 安装依赖
@@ -148,8 +153,13 @@ NovaForge/
 ├── README.md                          # 本文件
 ├── LICENSE                            # MIT 开源协议
 ├── .gitignore
+├── .claude/                            # Claude Code 集成
+│   └── skills/                         #   skill 目录
+│       ├── NovaForge.skill             #     笔记模板（/novaforge）
+│       ├── pdf/                        #     PDF 处理（/pdf）
+│       └── summarize-slides/           #     课件总结（/summarize-slides）
+│
 ├── NovaForge.skill                    # ← Claude Code 独立 skill 文件
-│                                      #   下载单个文件即可 AI 集成
 │
 ├── assets/                            # 预览图与资源
 │   ├── preview-1.png                  #   封面与整体效果

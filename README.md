@@ -25,12 +25,15 @@
   <img src="https://img.shields.io/badge/LaTeX-xelatex-green.svg" alt="LaTeX"/>
   <img src="https://img.shields.io/badge/Typst-typst-rgb(0%2C%20130%2C%20200)" alt="Typst"/>
   <img src="https://img.shields.io/badge/markdown-ready-brightgreen.svg" alt="Markdown"/>
-  <a href="NovaForge.skill"><img src="https://img.shields.io/badge/Claude-Skill-8A2BE2" alt="Claude Skill"/></a>
+  <a href="skills/novaforge/SKILL.md"><img src="https://img.shields.io/badge/Claude-Skill-8A2BE2" alt="Claude Skill"/></a>
 </p>
 
 ---
 
 ## 📋 更新日志
+
+### 2026/5/17
+- **改用标准 Skills 目录布局**：`NovaForge.skill` → `skills/novaforge/SKILL.md`、`.claude/skills/NovaForge.skill` → `.claude/skills/novaforge/SKILL.md`。让 ccswitch 等外部工具及 Claude Code 本地发现机制能按官方约定识别 skill
 
 ### 2026/5/16 23:22
 - **移除 pdf companion 依赖**：NovaForge 独立完成 LaTeX 编译，不再依赖 pdf skill
@@ -115,7 +118,7 @@ cd markdown
 # 直接用 VS Code / Obsidian 编辑 .md 文件
 
 #   Claude Code 集成
-# 仓库已内置 .claude/skills/NovaForge.skill，克隆后 /novaforge 直接可用
+# 仓库已内置 .claude/skills/novaforge/SKILL.md，克隆后 /novaforge 直接可用
 ```
 
 ### 安装依赖
@@ -157,11 +160,14 @@ NovaForge/
 ├── README.md                          # 本文件
 ├── LICENSE                            # MIT 开源协议
 ├── .gitignore
-├── .claude/                            # Claude Code 集成
-│   └── skills/                         #   skill 目录
-│       └── NovaForge.skill             #     笔记模板（/novaforge）
+├── .claude/                            # Claude Code 集成（本地自动发现）
+│   └── skills/
+│       └── novaforge/
+│           └── SKILL.md                #     笔记模板（/novaforge）
 │
-├── NovaForge.skill                    # ← Claude Code 独立 skill 文件
+├── skills/                             # 标准 Skills 目录（供 ccswitch 等外部工具发现）
+│   └── novaforge/
+│       └── SKILL.md                    # ← 同一份 skill，标准命名
 │
 ├── assets/                            # 预览图与资源
 │   ├── preview-1.png                  #   封面与整体效果
@@ -311,10 +317,10 @@ NovaForge 提供独立 `.skill` 文件，可直接用于 Claude Code：
 
 ```bash
 # 1. 下载 skill 文件
-# 从 GitHub 下载 NovaForge.skill，或直接从仓库根目录获取
+# 从 GitHub 下载 skills/novaforge/SKILL.md（连同 novaforge/ 目录一起）
 
 # 2. 放入 Claude Code skill 目录
-cp NovaForge.skill F:/.claude/skills/
+cp -r skills/novaforge ~/.claude/skills/
 
 # 3. 在 Claude Code 中调用
 # /NovaForge "帮我整理量子力学的复习笔记"

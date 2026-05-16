@@ -20,6 +20,11 @@ fi
 echo "[1/1] 编译中..."
 typst compile template.typ
 
+if [ $? -ne 0 ]; then
+    echo "[错误] 编译失败！"
+    exit 1
+fi
+
 echo ""
 echo "✅ 编译完成！"
 echo "📄 输出文件: $(pwd)/template.pdf"

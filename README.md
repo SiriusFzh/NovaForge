@@ -32,10 +32,14 @@
 
 ## 📋 更新日志
 
-### 2026/5/16 12:48
+### 2026/5/16 12:00
 - **修复引号渲染方向**：导言区新增中文引号规范，强制使用 Unicode 弯引号（U+201C/U+201D）
 - **消除目录红框**：hyperref 改用 `hidelinks`，去除目录条目链接边框
 - **编译清理说明**：模板注释和 Build 流程补充辅助文件（.aux/.log/.out/.toc）清理指引
+- **清理 template.tex 死代码**：移除 `\end{document}` 后的残留命令定义
+- **修复 Typst 模板语法错误**：修正 `template.typ` 中引号不平衡
+- **README 目录树补全**：scripts/ 目录新增缺失的 3 个脚本
+- **compile-typst.sh 增强**：新增编译失败的错误处理
 
 ### 2026/5/15 23:28
 - **新增 Typst 模板版本**：提供 `typst/preamble.typ` + `typst/template.typ`，语法更现代、编译更快（单次编译，无需多遍）
@@ -173,7 +177,10 @@ NovaForge/
 └── scripts/                           # 配套工具脚本
     ├── new-project.bat                #   Windows: 快速新建项目
     ├── new-project.sh                 #   macOS/Linux: 快速新建项目
-    └── compile.bat                    #   Windows: 一键编译 LaTeX
+    ├── compile.bat                    #   Windows: 一键编译 LaTeX
+    ├── compile.sh                     #   macOS/Linux: 一键编译 LaTeX
+    ├── compile-typst.bat              #   Windows: 一键编译 Typst
+    └── compile-typst.sh               #   macOS/Linux: 一键编译 Typst
 ```
 
 ## 👀 预览

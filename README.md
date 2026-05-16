@@ -32,6 +32,11 @@
 
 ## 📋 更新日志
 
+### 2026/5/16 12:48
+- **修复引号渲染方向**：导言区新增中文引号规范，强制使用 Unicode 弯引号（U+201C/U+201D）
+- **消除目录红框**：hyperref 改用 `hidelinks`，去除目录条目链接边框
+- **编译清理说明**：模板注释和 Build 流程补充辅助文件（.aux/.log/.out/.toc）清理指引
+
 ### 2026/5/15 23:28
 - **新增 Typst 模板版本**：提供 `typst/preamble.typ` + `typst/template.typ`，语法更现代、编译更快（单次编译，无需多遍）
 - **三种输出格式**：Intake 流程扩展为 LaTeX（默认）/ Typst / Markdown 三选一

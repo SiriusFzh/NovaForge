@@ -27,6 +27,18 @@ description: NovaForge 通用知识笔记模板 — 将任意学科/项目的知
 - 默认输出路径：在当前工作目录下创建 `NovaForge-Output-<project-name>/` 文件夹，所有文件放入其中。
 - 默认编译方式：LaTeX 模式 `xelatex` × 2 遍，Typst 模式 `typst compile` 单次编译。
 - 知识点旁如能用图片更直观、更易理解的，必须加入图片（LaTeX 用 tikz 绘制，Typst 用 cetz 或内置绘图，Markdown 用链接/嵌入）。图片应是简洁的概念性图示，而非装饰性插图。
+- **TikZ 箭头标签防重叠规则：** 所有 TikZ 箭头上的标签必须使用 `alabel` 系列样式代替裸 `above`/`below`，禁用裸 `pos=` 手动调位置。
+  - `node[alabel] {条件}` — 自动选择上下侧（推荐）
+  - `node[alabel above] {条件}` — 强制上方，`pos=0.4` 偏左避让目标节点
+  - `node[alabel below] {条件}` — 强制下方，`pos=0.4` 偏左避让目标节点
+  - 必须在导言区或 tikzpicture 之前加载样式定义：
+    ```latex
+    \tikzset{
+      alabel/.style={auto, inner sep=2pt, font=\small},
+      alabel above/.style={above, pos=0.4, inner sep=2pt, font=\small},
+      alabel below/.style={below, pos=0.4, inner sep=2pt, font=\small},
+    }
+    ```
 - **日期格式规则：** 所有资料（考研/考公/竞赛/期末/专业课）的最终修订日期必须使用中文完整格式 `YYYY年M月D日`（如 `2026年5月14日`），不可省略年、月、日中的任何部分，不可使用斜杠格式。除非用户明确要求修改，否则必须遵守此格式。
 - **知识要点覆盖规则：** 所有知识点**至少必须提及**，不能跳过一个主题完全不写。深度按重要性分档：**重点知识详细展开**（定义、公式、原理、易错点、适用条件等），**边缘知识简要带过**（一两句话说明是什么即可）。核心原则：广度优先、深度按需。用户可随时要求进一步精简或补充。
 - 当此 skill 被触发时，仅输出文字聊天不算完成，必须生成文件并确认写入磁盘。
